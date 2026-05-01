@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overscroll-behavior: none;
+  background: #000;
+  color: #fff;
+  font-family: ui-rounded, system-ui, "Segoe UI", Roboto, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/* Fluid VN typography */
+.vn-text { font-size: clamp(1rem, 2.6vw, 1.4rem); line-height: 1.5; }
+.vn-name { font-size: clamp(0.95rem, 2.2vw, 1.2rem); }
