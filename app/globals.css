@@ -16,3 +16,78 @@ html, body {
 /* Fluid VN typography */
 .vn-text { font-size: clamp(1rem, 2.6vw, 1.4rem); line-height: 1.5; }
 .vn-name { font-size: clamp(0.95rem, 2.2vw, 1.2rem); }
+
+/* ── Emotion face animations ──────────────────────────────────────────────── */
+
+/* Angry / annoyed: rapid shake + micro-rotate */
+@keyframes emotion-angry {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  15%       { transform: translateX(-6px) rotate(-4deg); }
+  30%       { transform: translateX(6px)  rotate(4deg); }
+  45%       { transform: translateX(-5px) rotate(-3deg); }
+  60%       { transform: translateX(5px)  rotate(3deg); }
+  75%       { transform: translateX(-3px); }
+  90%       { transform: translateX(3px); }
+}
+@keyframes emotion-annoyed {
+  0%, 100% { transform: translateX(0); }
+  33%       { transform: translateX(-4px) rotate(-2deg); }
+  66%       { transform: translateX(4px)  rotate(2deg); }
+}
+
+/* Happy / love / wink: bulge up and breathe back */
+@keyframes emotion-happy {
+  0%, 100% { transform: scale(1); }
+  45%       { transform: scale(1.14) translateY(-4px); }
+  65%       { transform: scale(1.08) translateY(-2px); }
+}
+@keyframes emotion-love {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.18) translateY(-5px); }
+}
+
+/* Sad: gentle droop down, settle back */
+@keyframes emotion-sad {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(10px) rotate(2deg); }
+}
+
+/* Surprised: quick pop-up jolt */
+@keyframes emotion-surprised {
+  0%, 55%, 100% { transform: scale(1)    translateY(0); }
+  20%            { transform: scale(1.22) translateY(-7px); }
+  35%            { transform: scale(1.1)  translateY(-3px); }
+}
+
+/* Laughing: gentle rock side to side */
+@keyframes emotion-laughing {
+  0%, 100% { transform: rotate(0deg)   translateY(0); }
+  25%       { transform: rotate(-6deg) translateY(-2px); }
+  75%       { transform: rotate(6deg)  translateY(-2px); }
+}
+
+/* Kiss / content / calm: slow float */
+@keyframes emotion-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+
+/* Smart: subtle tilt back and forth */
+@keyframes emotion-smart {
+  0%, 100% { transform: rotate(0deg); }
+  40%       { transform: rotate(-4deg); }
+  70%       { transform: rotate(3deg); }
+}
+
+.anim-angry     { animation: emotion-angry     0.45s ease-in-out infinite; }
+.anim-annoyed   { animation: emotion-annoyed   0.7s  ease-in-out infinite; }
+.anim-happy     { animation: emotion-happy     1.1s  ease-in-out infinite; }
+.anim-love      { animation: emotion-love      0.85s ease-in-out infinite; }
+.anim-sad       { animation: emotion-sad       1.8s  ease-in-out infinite; }
+.anim-surprised { animation: emotion-surprised 1.6s  ease-in-out infinite; }
+.anim-laughing  { animation: emotion-laughing  0.55s ease-in-out infinite; }
+.anim-kiss      { animation: emotion-float     1.4s  ease-in-out infinite; }
+.anim-content   { animation: emotion-float     2.2s  ease-in-out infinite; }
+.anim-calm      { animation: emotion-float     2.8s  ease-in-out infinite; }
+.anim-smart     { animation: emotion-smart     1.5s  ease-in-out infinite; }
+.anim-wink      { animation: emotion-happy     1.6s  ease-in-out infinite; }
