@@ -30,11 +30,13 @@ function EmotionFace({
   emotion,
   active,
   side,
+  typing,
 }: {
   who: "ishita" | "jayesh";
   emotion: Emotion;
   active: boolean;
   side: "left" | "right";
+  typing: boolean;
 }) {
   return (
     <div
@@ -43,7 +45,7 @@ function EmotionFace({
       }`}
     >
       {/* inner wrapper takes the animation so it doesn't fight the translate-y above */}
-      <div className={`w-full h-full ${EMOTION_ANIM[emotion]}`}>
+      <div className={`w-full h-full ${typing ? EMOTION_ANIM[emotion] : ""}`}>
         <Image
           src={`/characters/${who}-${emotion}.png`}
           alt={`${who} ${emotion}`}
@@ -73,13 +75,18 @@ export default function DialogueBox({
 
   // Typewriter effect — resets whenever `text` changes
   const [displayed, setDisplayed] = useState("");
+  const [typing, setTyping] = useState(true);
   useEffect(() => {
     setDisplayed("");
+    setTyping(true);
     let idx = 0;
     const id = setInterval(() => {
       idx++;
       setDisplayed(text.slice(0, idx));
-      if (idx >= text.length) clearInterval(id);
+      if (idx >= text.length) {
+        clearInterval(id);
+        setTyping(false);
+      }
     }, 28);
     return () => clearInterval(id);
   }, [text]);
@@ -93,12 +100,14 @@ export default function DialogueBox({
           emotion={ishitaEmotion}
           active={speaker === "ishita"}
           side="left"
+          typing={typing}
         />
         <EmotionFace
           who="jayesh"
           emotion={jayeshEmotion}
           active={speaker === "jayesh"}
           side="right"
+          typing={typing}
         />
 
         <div className="h-full flex flex-col justify-center px-[20vw] sm:px-[14vw] py-3 sm:py-4">
