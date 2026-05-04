@@ -3,7 +3,8 @@
   "configurations": [
     {
       "name": "visn",
-      "runtimeExecutable": "npm",
+      "env": {"PATH": "/Users/jayeshbhushan/.nvm/versions/node/v20.20.0/bin:/usr/local/bin:/usr/bin:/bin"},
+      "runtimeExecutable": "/Users/jayeshbhushan/.nvm/versions/node/v20.20.0/bin/npm",
       "runtimeArgs": ["run", "dev"],
       "port": 3000
     }

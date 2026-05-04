@@ -49,6 +49,8 @@ export default function VisualNovel() {
           speaker={line.speaker}
           text={line.text}
           hint={i === total - 1 ? "tap to finish ▸" : undefined}
+          ishitaEmotion={line.ishitaEmotion}
+          jayeshEmotion={line.jayeshEmotion}
         />
       </Scene>
 
