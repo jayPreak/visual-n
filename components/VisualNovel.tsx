@@ -26,15 +26,136 @@ export default function VisualNovel() {
   if (ended) {
     return (
       <main
-        className="fixed inset-0 grid place-items-center bg-gradient-to-br from-pink-500 via-fuchsia-600 to-indigo-700 text-center px-6"
+        className="fixed inset-0 grid place-items-center overflow-hidden"
+        style={{
+          background: "linear-gradient(135deg, #fce7f3 0%, #fde2e4 50%, #fef2f2 100%)",
+        }}
         onClick={() => setI(0)}
       >
-        <div>
-          <div className="text-6xl sm:text-8xl mb-4">🎂</div>
-          <h1 className="text-3xl sm:text-5xl font-bold mb-2">Happy 20th, Ishita</h1>
-          <p className="text-white/80 vn-text">— Jayesh</p>
-          <p className="mt-8 text-white/60 text-sm">tap anywhere to replay</p>
+        {/* Confetti particles */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(15)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute animate-confetti"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: "-10px",
+                opacity: 0.6 + Math.random() * 0.4,
+                animation: `confetti ${2 + Math.random() * 2}s linear forwards`,
+                animationDelay: `${Math.random() * 0.5}s`,
+              }}
+            >
+              {["🎉", "✨", "💝", "🎀"][Math.floor(Math.random() * 4)]}
+            </div>
+          ))}
         </div>
+
+        {/* Card container */}
+        <div className="relative z-10 max-w-sm">
+          {/* Glow background */}
+          <div className="absolute inset-0 rounded-3xl blur-2xl opacity-20 pointer-events-none"
+            style={{
+              background: "linear-gradient(135deg, #ec4899 0%, #f43f5e 100%)",
+            }}
+          />
+
+          {/* Main card */}
+          <div className="relative px-8 py-12 sm:px-12 sm:py-16 text-center rounded-3xl backdrop-blur-sm border border-white/40"
+            style={{
+              background: "rgba(255, 255, 255, 0.8)",
+              boxShadow: "0 25px 50px -12px rgba(236, 72, 153, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.5)",
+            }}
+          >
+            {/* Cake emoji with animation */}
+            <div className="mb-6 inline-block animate-bounce"
+              style={{
+                animationDuration: "2.5s",
+              }}
+            >
+              <div className="text-8xl sm:text-9xl drop-shadow-lg" style={{
+                filter: "drop-shadow(0 0 20px rgba(236, 72, 153, 0.4))"
+              }}>🎂</div>
+            </div>
+
+            {/* Birthday message */}
+            <h1 className="text-4xl sm:text-5xl font-serif font-bold mb-3 leading-tight"
+              style={{
+                color: "#be185d",
+                fontFamily: "Georgia, serif",
+                animation: "fadeInUp 0.8s ease-out 0.2s both",
+              }}
+            >
+              Happy 20th
+            </h1>
+            <h2 className="text-3xl sm:text-4xl font-serif mb-6"
+              style={{
+                color: "#be185d",
+                fontFamily: "Georgia, serif",
+                animation: "fadeInUp 0.8s ease-out 0.4s both",
+              }}
+            >
+              Ishita
+            </h2>
+
+            {/* Signature */}
+            <p className="text-lg text-pink-800/70 font-light italic mb-8 vn-text"
+              style={{
+                animation: "fadeInUp 0.8s ease-out 0.6s both",
+              }}
+            >
+              — Jayesh
+            </p>
+
+            {/* Decorative line */}
+            <div className="w-12 h-1 mx-auto mb-6 rounded-full"
+              style={{
+                background: "linear-gradient(90deg, transparent, #ec4899, transparent)",
+                animation: "fadeInUp 0.8s ease-out 0.8s both",
+              }}
+            />
+
+            {/* Tap to replay */}
+            <p className="text-sm text-pink-600/60 tracking-widest uppercase font-medium"
+              style={{
+                animation: "fadeInUp 0.8s ease-out 1s both, pulse 2s ease-in-out 1.8s infinite",
+              }}
+            >
+              tap anywhere to replay
+            </p>
+          </div>
+        </div>
+
+        <style jsx>{`
+          @keyframes confetti {
+            0% {
+              transform: translateY(0) rotateZ(0deg);
+              opacity: 1;
+            }
+            100% {
+              transform: translateY(100vh) rotateZ(720deg);
+              opacity: 0;
+            }
+          }
+          @keyframes fadeInUp {
+            from {
+              opacity: 0;
+              transform: translateY(20px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          @keyframes pulse {
+            0%, 100% {
+              opacity: 0.6;
+            }
+            50% {
+              opacity: 1;
+            }
+          }
+        `}</style>
       </main>
     );
   }
