@@ -35,7 +35,7 @@ export const story: Line[] = [
     background: "airport",
     layout: "both",
     speaker: "narrator",
-    text: "bonjour pussy cat",
+    text: "bonjour monsieur pussy cat",
     ishitaEmotion: "happy",
     jayeshEmotion: "happy",
   },
